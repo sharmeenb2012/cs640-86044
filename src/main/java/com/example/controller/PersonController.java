@@ -25,7 +25,7 @@ public class PersonController {
         map.put("person", new Person());
         map.put("peopleList", personService.listPeople());
 
-        return "people";
+        return "home";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -33,7 +33,7 @@ public class PersonController {
 
         personService.addPerson(person);
 
-        return "redirect:/people/";
+        return "redirect:/home/";
     }
 
     @RequestMapping("/delete/{personId}")
@@ -41,6 +41,6 @@ public class PersonController {
 
         personService.removePerson(personId);
 
-        return "redirect:/people/";
+        return "redirect:/home/";
     }
 }
