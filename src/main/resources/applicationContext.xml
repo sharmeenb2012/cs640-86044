@@ -28,21 +28,6 @@
         <property name="dataSource" ref="dataSource"/>
 
     </bean>
-<beans profile="dev">
-        <jdbc:embedded-database id="dataSource"/>        
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-            <property name="dataSource" ref="dataSource"/>
-            <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-            </property>
-            <property name="jpaProperties">
-                <props>
-                    <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                    <prop key="hibernate.hbm2ddl.auto">create</prop>
-                </props>
-            </property>
-        </bean>
-    </beans>
     <beans profile="default">
         <jdbc:embedded-database id="dataSource"/>        
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -58,6 +43,22 @@
             </property>
         </bean>
     </beans>
+<beans profile="dev">
+        <jdbc:embedded-database id="dataSource"/>        
+        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+            <property name="dataSource" ref="dataSource"/>
+            <property name="jpaVendorAdapter">
+                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+            </property>
+            <property name="jpaProperties">
+                <props>
+                    <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                    <prop key="hibernate.hbm2ddl.auto">create</prop>
+                </props>
+            </property>
+        </bean>
+    </beans>
+   
 
     <beans profile="prod">
         <bean class="java.net.URI" id="dbUrl">
